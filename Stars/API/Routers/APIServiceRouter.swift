@@ -15,7 +15,10 @@ protocol APIServiceRouter: URLRequestConvertible {
 extension APIServiceRouter {
 	
 	var baseURL: URL {
-        return URL(string: "https://api.github.com/search/")!
+		guard let url = URL(string: "https://api.github.com/search/") else {
+			fatalError("We can improve this approach, right.")
+		}
+        return url
 	}
 
 	var headers: HTTPHeaders? {
